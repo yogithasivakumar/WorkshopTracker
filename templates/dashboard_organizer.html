@@ -1,19 +1,24 @@
 {% extends "layout.html" %}
+{% block title %}Organizer Dashboard{% endblock %}
 {% block content %}
-<h2>Organizer Dashboard</h2>
-<p>Welcome, {{ username }}!</p>
-<ul>
-  <li><a href="{{ url_for('create_workshop') }}">Create Workshop</a></li>
-  <li><a href="{{ url_for('view_registrations') }}">View Registrations</a></li>
-  <li><a href="{{ url_for('view_attendance') }}">View Attendance</a></li>
-  <li>Mark Attendance:
-  <ul>
-  {% for workshop in workshops %}
-    <li><a href="{{ url_for('mark_attendance', workshop_id=workshop._id) }}">{{ workshop.title }}</a></li>
-  {% endfor %}
-  </ul>
-</li>
-</ul>
+<h2 class="mb-4">Organizer Dashboard</h2>
+<p>Welcome, <strong>{{ username }}</strong>!</p>
 
-<a href="{{ url_for('logout') }}">Logout</a>
+<div class="list-group">
+  <a href="{{ url_for('create_workshop') }}" class="list-group-item list-group-item-action">Create Workshop</a>
+  <a href="{{ url_for('view_registrations') }}" class="list-group-item list-group-item-action">View Registrations</a>
+  <a href="{{ url_for('view_attendance') }}" class="list-group-item list-group-item-action">View Attendance</a>
+</div>
+
+<h4 class="mt-4">Mark Attendance</h4>
+<ul class="list-group">
+  {% for workshop in workshops %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      {{ workshop.title }}
+      <a href="{{ url_for('mark_attendance', workshop_id=workshop._id) }}" class="btn btn-sm btn-primary">Mark Attendance</a>
+    </li>
+  {% else %}
+    <li class="list-group-item">No workshops available.</li>
+  {% endfor %}
+</ul>
 {% endblock %}

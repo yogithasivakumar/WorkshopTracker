@@ -1,17 +1,31 @@
 {% extends "layout.html" %}
+{% block title %}Your Certificates{% endblock %}
 {% block content %}
-<h2>My Certificates</h2>
-<ul>
-  {% for attendance in attendance_records %}
-    {% if attendance.status == "present" %}
-      <li>
-        {{ attendance.workshop.title }} - 
-        <a href="{{ url_for('download_certificate', workshop_id=attendance.workshop._id) }}">Download Certificate</a>
-      </li>
-    {% endif %}
-  {% else %}
-  <li>No certificates available.</li>
-  {% endfor %}
-</ul>
-<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+<h2>Your Certificates</h2>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Workshop Title</th>
+      <th>Date</th>
+      <th>Download</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in attendance_records %}
+      <tr>
+        <td>{{ record.workshop.title }}</td>
+        <td>{{ record.workshop.date.strftime('%Y-%m-%d') }}</td>
+        <td>
+          <a href="{{ url_for('download_certificate', workshop_id=record.workshop._id) }}" class="btn btn-success btn-sm">
+            Download Certificate
+          </a>
+        </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="3">No certificates available yet.</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

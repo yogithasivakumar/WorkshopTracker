@@ -1,11 +1,20 @@
 {% extends "layout.html" %}
+{% block title %}Participant Dashboard{% endblock %}
 {% block content %}
-<h2>Participant Dashboard</h2>
-<p>Welcome, {{ username }}!</p>
-<ul>
-    <li><a href="{{ url_for('participant_workshops') }}">View Available Workshops</a></li>
-    <li><a href="{{ url_for('participant_attendance') }}">My Attendance</a></li>
-    <li><a href="{{ url_for('participant_certificates') }}">Download Certificates</a></li>
-</ul>
-<a href="{{ url_for('logout') }}">Logout</a>
+<h2 class="mb-4">Participant Dashboard</h2>
+<p>Welcome, <strong>{{ username }}</strong>!</p>
+
+<div class="list-group mb-3">
+  <a href="{{ url_for('participant_workshops') }}" class="list-group-item list-group-item-action">
+    View Available Workshops
+  </a>
+  <a href="{{ url_for('participant_attendance') }}" class="list-group-item list-group-item-action">
+    My Attendance
+  </a>
+  <a href="{{ url_for('participant_certificates') }}" class="list-group-item list-group-item-action">
+    Download Certificates
+  </a>
+</div>
+
+<a href="{{ url_for('logout') }}" class="btn btn-outline-danger">Logout</a>
 {% endblock %}

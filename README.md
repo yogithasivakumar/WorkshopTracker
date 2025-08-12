@@ -2,8 +2,8 @@
 
 This is a Flask-based web application for managing workshops, supporting two user roles:
 
-- **Organizers**: Create workshops, view registrations and attendance, and generate QR codes for attendance marking.
-- **Participants**: Register for workshops, mark attendance via QR codes, and download personalized certificates of completion.
+- **Organizers**: Create workshops, view registrations and attendance.
+- **Participants**: Register for workshops, mark attendance, and download personalized certificates of completion.
 
 ---
 
@@ -11,10 +11,9 @@ This is a Flask-based web application for managing workshops, supporting two use
 
 - User authentication with role-based access control (Organizers and Participants).
 - Workshop creation, listing, and registration.
-- Attendance marking (manual and QR code based).
+- Attendance marking (manual).
 - Participant dashboard to view registered workshops and attendance.
-- Certificate generation as downloadable PNG images, dynamically customized with participant name, workshop title, and date.
-- QR code generation for quick attendance marking.
+- Certificate generation as downloadable PDF.
 - MongoDB for data persistence.
 
 ---
@@ -72,3 +71,4 @@ Start the Flask development server:
 
 ```bash
 python app.py
+

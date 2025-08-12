@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Participant Dashboard</h2>
+<p>Welcome, {{ username }}!</p>
+<ul>
+    <li><a href="{{ url_for('participant_workshops') }}">View Available Workshops</a></li>
+    <li><a href="{{ url_for('participant_attendance') }}">My Attendance</a></li>
+    <li><a href="{{ url_for('participant_certificates') }}">Download Certificates</a></li>
+</ul>
+<a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}

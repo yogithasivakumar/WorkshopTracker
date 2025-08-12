@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Registrations for Your Workshops</h2>
+{% if registrations %}
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Workshop</th>
+      <th>Participant</th>
+      <th>Registered At</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for reg in registrations %}
+    <tr>
+      <td>{{ reg.workshop.title if reg.workshop }}</td>
+      <td>{{ reg.participant.username if reg.participant }}</td>
+      <td>{{ reg.registered_at.strftime('%Y-%m-%d %H:%M') }}</td>
+      <td>{{ reg.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No registrations found.</p>
+{% endif %}
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}

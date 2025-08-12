@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Create Workshop</h2>
+<form method="POST">
+  <label>Title:</label><br />
+  <input type="text" name="title" required /><br />
+
+  <label>Description:</label><br />
+  <textarea name="description" required></textarea><br />
+
+  <label>Date (YYYY-MM-DD):</label><br />
+  <input type="date" name="date" required /><br />
+
+  <label>Capacity:</label><br />
+  <input type="number" name="capacity" min="1" required /><br /><br />
+
+  <button type="submit">Create Workshop</button>
+</form>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Organizer Dashboard</h2>
+<p>Welcome, {{ username }}!</p>
+<ul>
+  <li><a href="{{ url_for('create_workshop') }}">Create Workshop</a></li>
+  <li><a href="{{ url_for('view_registrations') }}">View Registrations</a></li>
+  <li><a href="{{ url_for('view_attendance') }}">View Attendance</a></li>
+  <li>Mark Attendance:
+  <ul>
+  {% for workshop in workshops %}
+    <li><a href="{{ url_for('mark_attendance', workshop_id=workshop._id) }}">{{ workshop.title }}</a></li>
+  {% endfor %}
+  </ul>
+</li>
+</ul>
+
+<a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}

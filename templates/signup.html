@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Signup</h2>
+<form method="POST">
+    <label>Username:</label><br>
+    <input type="text" name="username" required><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br>
+
+    <label>Role:</label><br>
+    <select name="role" required>
+        <option value="participant">Participant</option>
+        <option value="organizer">Organizer</option>
+    </select><br><br>
+
+    <button type="submit">Sign Up</button>
+</form>
+<p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
+{% endblock %}

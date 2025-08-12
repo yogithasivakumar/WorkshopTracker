@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Attendance Records for Your Workshops</h2>
+
+{% if attendance_records %}
+<table border="1" cellpadding="6" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Workshop</th>
+      <th>Participant</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in attendance_records %}
+    <tr>
+      <td>{{ record.workshop.title if record.workshop }}</td>
+      <td>{{ record.participant.username if record.participant }}</td>
+      <td>{{ record.date.strftime('%Y-%m-%d') }}</td>
+      <td>{{ record.status }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No attendance records found.</p>
+{% endif %}
+
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}

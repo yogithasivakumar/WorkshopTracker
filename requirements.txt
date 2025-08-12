@@ -1,0 +1,9 @@
+Flask
+pymongo
+python-dotenv
+Flask-Login
+qrcode
+Pillow
+reportlab
+werkzeug
+pillow

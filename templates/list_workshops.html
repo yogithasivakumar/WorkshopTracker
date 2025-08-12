@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Available Workshops</h2>
+<ul>
+  {% for w in workshops %}
+  <li>
+    <strong>{{ w.title }}</strong> - {{ w.date.strftime('%Y-%m-%d') }}<br />
+    {{ w.description }}<br />
+    Capacity: {{ w.capacity }}<br />
+    {% if session.role == 'participant' %}
+      <a href="{{ url_for('register_workshop', workshop_id=w._id) }}">Register</a>
+    {% endif %}
+  </li>
+  <hr>
+  {% else %}
+  <li>No workshops available.</li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}

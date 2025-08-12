@@ -1,0 +1,16 @@
+ 
+{% extends "layout.html" %}
+{% block content %}
+<h2>Available Workshops</h2>
+<ul>
+  {% for w in workshops %}
+  <li>
+    <strong>{{ w.title }}</strong> on {{ w.date.strftime('%Y-%m-%d') }} -
+    <a href="{{ url_for('register_workshop', workshop_id=w._id) }}">Register</a>
+  </li>
+  {% else %}
+  <li>No workshops available.</li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Mark Attendance for {{ workshop.title }}</h2>
+<form method="post">
+  <ul>
+    {% for reg in registrations %}
+    <li>
+      <input type="checkbox" name="attendance" value="{{ reg._id }}" id="reg{{ loop.index }}">
+      <label for="reg{{ loop.index }}">{{ reg.participant.username }}</label>
+    </li>
+    {% endfor %}
+  </ul>
+  <button type="submit">Save Attendance</button>
+</form>
+<a href="{{ url_for('view_attendance') }}">Back to Attendance Overview</a>
+{% endblock %}

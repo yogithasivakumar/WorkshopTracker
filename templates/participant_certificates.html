@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>My Certificates</h2>
+<ul>
+  {% for attendance in attendance_records %}
+    {% if attendance.status == "present" %}
+      <li>
+        {{ attendance.workshop.title }} - 
+        <a href="{{ url_for('download_certificate', workshop_id=attendance.workshop._id) }}">Download Certificate</a>
+      </li>
+    {% endif %}
+  {% else %}
+  <li>No certificates available.</li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+{% endblock %}
